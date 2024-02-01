@@ -1,1 +1,16 @@
-{}
+{
+    "name": "defowler",
+    "short_name": "defowler",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "defowler page",
+    "icons": [
+        {
+            "src": "favicon.png",
+            "sizes": "845x848",
+            "type": "image/png"
+        }
+    ],
+    "related_applications": []
+}

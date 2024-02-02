@@ -1,14 +1,112 @@
 {
     "name": "defowler",
     "short_name": "defowler",
+    "version": "0.0.1",
     "start_url": "/",
     "display": "standalone",
     "icons": [
         {
-            "sizes": "845x848",
-            "src": "favicon.png"
+            "sizes": "114x114",
+            "src": "https://defowler.tech/favicon.png"
+        },
+        {
+            "sizes": "120x120",
+            "src": "https://defowler.tech/favicon.png"
+        },
+        {
+            "sizes": "144x144",
+            "src": "https://defowler.tech/favicon.png"
+        },
+        {
+            "sizes": "152x152",
+            "src": "https://defowler.tech/favicon.png"
+        },
+        {
+            "sizes": "180x180",
+            "src": "https://defowler.tech/favicon.png"
+        },
+        {
+            "sizes": "57x57",
+            "src": "https://defowler.tech/favicon.png"
+        },
+        {
+            "sizes": "60x60",
+            "src": "https://defowler.tech/favicon.png"
+        },
+        {
+            "sizes": "72x72",
+            "src": "https://defowler.tech/favicon.png"
+        },
+        {
+            "sizes": "76x76",
+            "src": "https://defowler.tech/favicon.png"
+        },
+        {
+            "src": "https://defowler.tech/favicon.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "https://defowler.tech/favicon.png",
+            "type": "image/png",
+            "sizes": "512x512"
         }
     ],
     "prefer_related_applications": true,
-    "related_applications": []
+    "related_applications": [],
+    "background_color": "#ffffff",
+    "theme_color": "#4285f4",
+    "description": "Your app's description goes here.",
+    "lang": "en-US",
+    "scope": "/",
+    "categories": [
+        "Personal",
+        "Entertainment"
+    ],
+    "dir": "auto",
+    "orientation": "any",
+    "screenshots": [
+        {
+            "src": "https://defowler.tech/favicon.png",
+            "sizes": "480x800",
+            "type": "image/png"
+        },
+        {
+            "src": "https://defowler.tech/favicon.png",
+            "sizes": "1080x1920",
+            "type": "image/png"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Shortcut Name 1",
+            "url": "/shortcut1",
+            "description": "Description for Shortcut 1",
+            "icons": [
+                {
+                    "src": "https://defowler.tech/favicon.png",
+                    "sizes": "48x48"
+                },
+                {
+                    "src": "https://defowler.tech/favicon.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Shortcut Name 2",
+            "url": "/shortcut2",
+            "description": "Description for Shortcut 2",
+            "icons": [
+                {
+                    "src": "https://defowler.tech/favicon.png",
+                    "sizes": "48x48"
+                },
+                {
+                    "src": "https://defowler.tech/favicon.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ]
 }

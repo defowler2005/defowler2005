@@ -1,31 +1,18 @@
-const express = require('express');
-const multer = require('multer');
-const path = require('path');
-
+const express = require("express");
+const fs = require("node:fs");
+const path = require("node:path");
+const mime = require("mime-types");
 const app = express();
-const port = 3000;
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/')
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname)
-  }
-})
+const PORT = 6432;
+app.listen(PORT, () => console.log("The server is now running on port", PORT));
 
-const upload = multer({ storage: storage })
-
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get("*", (req, res, next) => {
+    const filePath = path.join(__dirname, (!req.originalUrl.slice(1).length ? "index.html" : req.originalUrl));
+    if (fs.existsSync(filePath)) {
+        res.set("Content-Type", mime.lookup(filePath) ?? "text/plain");
+        res.send(fs.readFileSync(filePath));
+    } else next();
 });
 
-app.post('/upload', upload.single('file'), (req, res) => {
-  res.send('File uploaded successfully!');
-});
-
-app.listen(port, () => {
-  console.log(`Server is listening at http://localhost:${port}`);
-});
+app.get("*", (_, res) => { res.set("Content-Type", "text/html"); res.set(200).send(fs.readFileSync('./404.html')) });

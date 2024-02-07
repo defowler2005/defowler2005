@@ -20,36 +20,6 @@
         {
             "sizes": "152x152",
             "src": "https://defowler.tech/favicons/favicon_152x152.png"
-        },
-        {
-            "sizes": "180x180",
-            "src": "https://defowler.tech/favicons/favicon_.png"
-        },
-        {
-            "sizes": "57x57",
-            "src": "https://defowler.tech/favicons/favicon.png"
-        },
-        {
-            "sizes": "60x60",
-            "src": "https://defowler.tech/favicons/favicon.png"
-        },
-        {
-            "sizes": "72x72",
-            "src": "https://defowler.tech/favicons/favicon.png"
-        },
-        {
-            "sizes": "76x76",
-            "src": "https://defowler.tech/favicon.png"
-        },
-        {
-            "src": "https://defowler.tech/favicon.png",
-            "type": "image/png",
-            "sizes": "192x192"
-        },
-        {
-            "src": "https://defowler.tech/favicon.png",
-            "type": "image/png",
-            "sizes": "512x512"
         }
     ],
     "prefer_related_applications": true,
@@ -82,21 +52,6 @@
             "name": "Shortcut Name 1",
             "url": "/shortcut1",
             "description": "Description for Shortcut 1",
-            "icons": [
-                {
-                    "src": "https://defowler.tech/favicon.png",
-                    "sizes": "48x48"
-                },
-                {
-                    "src": "https://defowler.tech/favicon.png",
-                    "sizes": "96x96"
-                }
-            ]
-        },
-        {
-            "name": "Shortcut Name 2",
-            "url": "/shortcut2",
-            "description": "Description for Shortcut 2",
             "icons": [
                 {
                     "src": "https://defowler.tech/favicon.png",

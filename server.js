@@ -4,7 +4,7 @@ const path = require('node:path');
 const mime = require('mime-types');
 const app = express();
 
-const PORT = 6432;
+const PORT = 80;
 app.listen(PORT, () => console.log('The server is now running on port', PORT));
 
 app.get('*', (req, res, next) => {

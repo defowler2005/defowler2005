@@ -5,3 +5,5 @@
 - 🌱 I’m currently learning Rust, C, C+, C++.
 - 💞️ I’m looking to collaborate on nothing.
 - 😄 Pronouns: He/Him.
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=defowler2005&layout=compact)](https://github.com/anuraghazra/github-readme-stats)

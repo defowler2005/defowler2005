@@ -13,7 +13,19 @@
         <priority>1.0</priority>
     </url>
     <url>
+        <loc>https://defowler.tech/generatePassword.js</loc>
+        <lastmod>2024-05-17T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
         <loc>https://defowler.tech/manifest.json</loc>
+        <lastmod>2024-02-01T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://defowler.tech/vs-code.png</loc>
         <lastmod>2024-02-01T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>

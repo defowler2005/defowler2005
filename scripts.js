@@ -36,7 +36,7 @@ const defowler = {
                 color = '#96d652';
                 message = `Type ${type} is an invalid usage for the writeLog() function, types include: INFO, WARNING, ERROR`;
                 break;
-        } console.log(`%c[${formattedType}] - ${message}`, `color: ${color}; background-color: ${b_color}`);
+        }; console.log(`%c[${formattedType}] - ${message}`, `color: ${color}; background-color: ${b_color}`);
     }
 };
 

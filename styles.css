@@ -5,7 +5,7 @@ body {
 }
 
 a {
-    color: #bb86fc;
+    color: #ffa726;
     text-decoration: none;
 }
 
@@ -13,7 +13,23 @@ a:hover {
     text-decoration: underline;
 }
 
-header, footer {
+main {
+    flex: 1;
+}
+
+header {
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    text-align: center;
     background-color: #1f1f1f;
     padding: 10px 20px;
 }
@@ -23,7 +39,12 @@ nav {
     padding: 10px 20px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: #ffffff;
 }
 
@@ -39,7 +60,8 @@ p {
     margin: 10px 0;
 }
 
-input, textarea {
+input,
+textarea {
     background-color: #2c2c2c;
     color: #e0e0e0;
     border: 1px solid #444;
@@ -48,7 +70,7 @@ input, textarea {
 }
 
 button {
-    background-color: #bb86fc;
+    background-color: #ffa726;
     color: #121212;
     border: none;
     border-radius: 5px;
@@ -57,10 +79,11 @@ button {
 }
 
 button:hover {
-    background-color: #9b68d8;
+    background-color: #ff8c00;
 }
 
-ul, ol {
+ul,
+ol {
     padding-left: 20px;
 }
 
@@ -73,7 +96,8 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     border: 1px solid #444;
     padding: 10px;
     text-align: left;

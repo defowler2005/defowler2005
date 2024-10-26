@@ -14,8 +14,8 @@ const defowler = {
         let b_color;
         const validTypes = ['INFO', 'WARNING', 'ERROR'];
 
-        if (!type || !validTypes.includes(type)) return console.log(`%c[WARNING] - You must include a valid message type for the usage of writeLog(). Valid types include ${validTypes.join(', ')}.`, `color: #ffa365; background-color: #654b39;`);
-        if (!message) return console.warn(`%c[WARNING] - You must include a message for the usage of writeLog().`, `color: #ffa365; background-color: #654b39;`);
+        if (!type || validTypes.includes(type) === false) return console.log(`%c[WARNING] - You must include a valid message type for the usage of writeLog(). Valid types include ${validTypes.join(', ')}.`, `color: #ffa365; background-color: #654b39;`);
+        if (!message) return console.log(`%c[WARNING] - You must include a message for the usage of writeLog().`, `color: #ffa365; background-color: #654b39;`);
         const formattedType = type.toUpperCase();
 
         switch (formattedType) {
@@ -37,12 +37,25 @@ const defowler = {
                 message = `Type ${type} is an invalid usage for the writeLog() function, types include: INFO, WARNING, ERROR`;
                 break;
         }; console.log(`%c[${formattedType}] - ${message}`, `color: ${color}; background-color: ${b_color}`);
+    },
+    /**
+     * Dynamically redirect the user upon a nav button click.
+     * @param {String} pageName - The page button the user clicked.
+     */
+    handleNavClick: (pageName) => {
+        const allpageNames = ['homePage'];
+        
+        if (allpageNames.includes(pageName) === false) return defowler.writeLog('WARNING', 'An invalid ');
     }
 };
 
 window.onload = () => {
     const isNonComputer = /Mobile|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
-
-    if (isNonComputer) eruda.init();
-    else defowler.writeLog('INFO', 'Eruda not loaded as a result of the user is on a computer device!');
+    
+    if (isNonComputer) {
+        if (typeof eruda !== 'undefined') eruda.init();
+        else defowler.writeLog('WARN', 'Eruda could not be loaded, maybe because eruda was not able to be fetched with httpGet. Sorry phone users!');
+    } else {
+        defowler.writeLog('INFO', 'Eruda was not loaded as the user already has a console.');
+    }
 };

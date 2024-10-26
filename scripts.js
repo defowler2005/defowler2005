@@ -7,7 +7,7 @@ const defowler = {
     /**
      * A function for formmated consoling.
      * @param {String} type - Message type, types include `INFO` `WARNING` `ERROR`.
-     * @param {String} message - 
+     * @param {String} message - The text to be printet intto the console.
      */
     writeLog: (type, message) => {
         let color;

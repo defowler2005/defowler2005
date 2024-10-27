@@ -12,22 +12,21 @@ const defowler = {
     writeLog: (type, message) => {
         const validTypes = ['INFO', 'WARNING', 'ERROR'];
 
-        if (!type || validTypes.includes(type) === false) return console.log(`%c[WARNING] - You must include a valid message type for the usage of writeLog(). Valid types include ${validTypes.join(', ')}.`, `color: #ffa365; background-color: #654b39;`);
-        if (!message) return console.log(`%c[WARNING] - You must include a message for the usage of writeLog().`, `color: #ffa365; background-color: #654b39;`);
-        const formattedType = type.toUpperCase();
+        if (!type || validTypes.includes(type) === false) return console.log(`%c[${validTypes[1]}] - You must include a valid message type for the usage of writeLog(). Valid types include ${validTypes.join(', ')}.`, `color: #ffa365; background-color: #654b39;`);
+        if (!message) return console.log(`%c[${validTypes[1]}] - You must include a message for the usage of writeLog().`, `color: #ffa365; background-color: #654b39;`);
 
-        switch (formattedType) {
-            case 'INFO':
-                console.log(`%c[${formattedType}] - ${message}`, `color: #96d652; background-color: #485b34`);
+        switch (type) {
+            case validTypes[0]:
+                console.log(`%c[${type}] - ${message}`, `color: #96d652; background-color: #485b34`);
                 break;
-            case 'WARNING':
-                console.warn(`%c[${formattedType}] - ${message}`, `color: #ffa365; background-color: #654b39`);
+            case validTypes[1]:
+                console.warn(`%c[${type}] - ${message}`, `color: #ffa365; background-color: #654b39`);
                 break;
-            case 'ERROR':
-                console.error(`%c[${formattedType}] - ${message}`, `color: #fe7b7f; background-color: #694143`);
+            case validTypes[2]:
+                console.error(`%c[${type}] - ${message}`, `color: #fe7b7f; background-color: #694143`);
                 break;
             default:
-                console.warn(`%c[${formattedType}] - Type ${type} is an invalid usage for the writeLog() function, types include: INFO, WARNING, ERROR`, `color: #ffa365; background-color: #654b39`);
+                console.warn(`%c[${type}] - Type ${type} is an invalid usage for the writeLog() function, types include: INFO, WARNING, ERROR`, `color: #ffa365; background-color: #654b39`);
                 break;
         };
     },
@@ -44,12 +43,21 @@ const defowler = {
             case allpageNames[0]:
                 window.location.href = '/'; // Back to the root (index.html).
                 break;
-                case allpageNames[1]:
-                window.location.href = '/projects.html'; // Back to the root (index.html).
+            case allpageNames[1]:
+                window.location.href = '/projects.html'; // Headed to the projects page.
                 break;
             default:
                 break;
         }
+    },
+    /**
+     * Sort numbers around.
+     * @param {Array<Number>} array - The array to be sorted.
+     * @returns {Array<Number>} - A version of an array which the numbers are sorted from 0 to 10 an up.
+     */
+    sortNumbers: (array) => {
+        if (typeof array !== 'Number') return defowler.writeLog('WARNING', 'An invalid variable type was parsed in the sortNumbers() function.');
+        return array.sort((a, b) => a - b);
     }
 };
 

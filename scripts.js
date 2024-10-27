@@ -56,6 +56,7 @@ const defowler = {
      * @returns {Array<Number>} - A version of an array which the numbers are sorted from 0 to 10 an up.
      */
     sortNumbers: (array) => {
+        if (!array) return defowler.writeLog('WARNING', 'You must provide a an array of numbers for the sortNumbers() function.');
         if (Array.isArray(array) === false) return defowler.writeLog('WARNING', 'An invalid variable type was parsed in the sortNumbers() function.');
         return array.sort((a, b) => a - b);
     }

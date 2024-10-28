@@ -7,7 +7,7 @@ const defowler = {
     /**
      * A function for formmated consoling.
      * @param {String} type - Message type, types include `INFO` `WARNING` `ERROR`.
-     * @param {String} message - The text to be printet intto the console.
+     * @param {String} message - The text to be printed into the console the console.
      */
     writeLog: (type, message) => {
         const validTypes = ['INFO', 'WARNING', 'ERROR'];
@@ -47,7 +47,7 @@ const defowler = {
                 window.location.href = '/projects.html'; // Headed to the projects page.
                 break;
             case allpageNames[2]:
-                window.location.href = '/falcons.html'; // Headed to the projects page.
+                window.location.href = '/cars.html'; // Headed to the projects page.
                 break;
             default:
                 break;

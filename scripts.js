@@ -35,7 +35,7 @@ const defowler = {
      * @param {String} pageName - The page button the user clicked.
      */
     handleNavButton: (pageName) => {
-        const allpageNames = ['home', 'projects', 'falcons'];
+        const allpageNames = ['home', 'projects'];
 
         if (allpageNames.includes(pageName) === false) return defowler.writeLog('WARNING', 'An invalid pageName was supplied at the handleNavButton() function.');
 
@@ -45,9 +45,6 @@ const defowler = {
                 break;
             case allpageNames[1]:
                 window.location.href = '/projects.html'; // Headed to the projects page.
-                break;
-            case allpageNames[2]:
-                window.location.href = '/cars.html'; // Headed to the projects page.
                 break;
             default:
                 break;

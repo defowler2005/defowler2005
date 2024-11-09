@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         script.onerror = () => {
             defowler.writeLog('ERROR', 'Failed to load Eruda script.');
         };
-        document.body.appendChild(script);  // Inject Eruda script dynamically
+        document.body.appendChild(script)
     } else {
         defowler.writeLog('INFO', 'Eruda was not loaded as the user already has a console.');
     }

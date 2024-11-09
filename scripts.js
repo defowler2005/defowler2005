@@ -5,28 +5,28 @@
  */
 const defowler = {
     /**
-     * A function for formmated consoling.
+     * A function for formatting logs.
      * @param {String} type - Message type, types include `INFO` `WARNING` `ERROR`.
      * @param {String} message - The text to be printed into the console the console.
      */
     writeLog: (type, message) => {
         const validTypes = ['INFO', 'WARNING', 'ERROR'];
 
-        if (!type || validTypes.includes(type) === false) return console.log(`%c[${validTypes[1]}] - You must include a valid message type for the usage of writeLog(). Valid types include ${validTypes.join(', ')}.`, `color: #ffa365; background-color: #654b39;`);
-        if (!message) return console.log(`%c[${validTypes[1]}] - You must include a message for the usage of writeLog().`, `color: #ffa365; background-color: #654b39;`);
+        if (!type || validTypes.includes(type) === false) return console.trace(`%c[${validTypes[1]}] - You must include a valid message type for the usage of writeLog(). Valid types include ${validTypes.join(', ')}.`, `color: #ffa365; background-color: #654b39;`);
+        if (!message) return console.trace(`%c[${validTypes[1]}] - You must include a message for the usage of writeLog().`, `color: #ffa365; background-color: #654b39;`);
 
         switch (type) {
             case validTypes[0]:
-                console.log(`%c[${type}] - ${message}`, `color: #96d652; background-color: #485b34`);
+                console.trace(`%c[${type}] - ${message}`, `color: #96d652; background-color: #485b34`);
                 break;
             case validTypes[1]:
-                console.warn(`%c[${type}] - ${message}`, `color: #ffa365; background-color: #654b39`);
+                console.trace(`%c[${type}] - ${message}`, `color: #ffa365; background-color: #654b39`);
                 break;
             case validTypes[2]:
-                console.error(`%c[${type}] - ${message}`, `color: #fe7b7f; background-color: #694143`);
+                console.trace(`%c[${type}] - ${message}`, `color: #fe7b7f; background-color: #694143`);
                 break;
             default:
-                console.warn(`%c[${type}] - Type ${type} is an invalid usage for the writeLog() function, types include: INFO, WARNING, ERROR`, `color: #ffa365; background-color: #654b39`);
+                console.trace(`%c[${type}] - Type ${type} is an invalid usage for the writeLog() function, types include: INFO, WARNING, ERROR`, `color: #ffa365; background-color: #654b39`);
                 break;
         };
     },
@@ -63,12 +63,24 @@ const defowler = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const hasConsole = /Mobile|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+    const isMobile = /Mobile|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
 
-    if (hasConsole) { // Does the client have a console?
-        if (typeof eruda !== 'undefined') {
-            eruda.init();
-            defowler.writeLog('INFO', 'Eruda successfully loaded you now have a console on your phone!');
-        } else defowler.writeLog('WARN', 'Eruda could not be loaded, eruda looks to be undefined. Sorry, phone users!');
-    } else defowler.writeLog('INFO', 'Eruda was not loaded as the user already has a console.');
+    if (isMobile) {  // Checks if the client is on a mobile device
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/eruda';
+        script.onload = () => {
+            if (typeof eruda !== 'undefined') {
+                eruda.init();
+                defowler.writeLog('INFO', 'Eruda successfully loaded. You now have a console on your phone!');
+            } else {
+                defowler.writeLog('WARN', 'Eruda could not be initialized; Eruda appears undefined.');
+            }
+        };
+        script.onerror = () => {
+            defowler.writeLog('ERROR', 'Failed to load Eruda script.');
+        };
+        document.body.appendChild(script);  // Inject Eruda script dynamically
+    } else {
+        defowler.writeLog('INFO', 'Eruda was not loaded as the user already has a console.');
+    }
 });

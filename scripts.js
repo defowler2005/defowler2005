@@ -1,5 +1,7 @@
 'use strict';
 
+(function() {
+
 /**
  * The main object of the scrips
  */
@@ -83,4 +85,5 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         defowler.writeLog('INFO', 'Eruda was not loaded as the user already has a console.');
     }
-});
+})
+})();

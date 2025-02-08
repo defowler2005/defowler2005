@@ -40,10 +40,11 @@ const defowler = {
         const allpageNames = ['home', 'projects'];
 
         if (allpageNames.includes(pageName) === false) return defowler.writeLog('WARNING', 'An invalid pageName was supplied at the handleNavButton() function.');
-
+        const isGhPages = window.location.href.includes('.github.io');
+        
         switch (pageName) {
             case allpageNames[0]:
-                window.location.href = '/'; // Back to the root (index.html).
+                window.location.href = isGhPages ? '/defowler2005': '/'; // Back to the root (index.html).
                 break;
             case allpageNames[1]:
                 window.location.href = '/projects.html'; // Headed to the projects page.

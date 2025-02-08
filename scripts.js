@@ -66,6 +66,7 @@ const defowler = {
 
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = /Mobile|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+    const isAppleProduct = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (isMobile) {  // Checks if the client is on a mobile device
         const script = document.createElement('script');
@@ -81,9 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
         script.onerror = () => {
             defowler.writeLog('ERROR', 'Failed to load Eruda script.');
         };
-        document.body.appendChild(script)
+        document.body.appendChild(script);
     } else {
         defowler.writeLog('INFO', 'Eruda was not loaded as the user already has a console.');
     }
+    //Check for Apple products.
+    if (isAppleProduct) defowler.log("WARNING", "Client is an apple user!");
 })
 //})();

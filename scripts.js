@@ -1,5 +1,7 @@
 'use strict';
 
+//(function() {
+
 /**
  * The main object of the scrips
  */
@@ -38,10 +40,11 @@ const defowler = {
         const allpageNames = ['home', 'projects'];
 
         if (allpageNames.includes(pageName) === false) return defowler.writeLog('WARNING', 'An invalid pageName was supplied at the handleNavButton() function.');
-
+        const isGhPages = window.location.href.includes('.github.io');
+        
         switch (pageName) {
             case allpageNames[0]:
-                window.location.href = '/'; // Back to the root (index.html).
+                window.location.href = isGhPages ? '/defowler2005': '/'; // Back to the root (index.html).
                 break;
             case allpageNames[1]:
                 window.location.href = '/projects.html'; // Headed to the projects page.
@@ -64,6 +67,7 @@ const defowler = {
 
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = /Mobile|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+    const isAppleProduct = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (isMobile) {  // Checks if the client is on a mobile device
         const script = document.createElement('script');
@@ -79,8 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
         script.onerror = () => {
             defowler.writeLog('ERROR', 'Failed to load Eruda script.');
         };
-        document.body.appendChild(script)
+        document.body.appendChild(script);
     } else {
         defowler.writeLog('INFO', 'Eruda was not loaded as the user already has a console.');
     }
-});
+    //Check for Apple products.
+    if (isAppleProduct) defowler.log("WARNING", "Client is an apple user!");
+})
+//})();

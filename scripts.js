@@ -3,16 +3,16 @@
 //(function() {
 
 /**
- * The main object of the scrips
+ * The main object of the scrips.
  */
 const defowler = {
     /**
      * A function for formatting logs.
-     * @param {String} type - Message type, types include `INFO` `WARNING` `ERROR`.
+     * @param {String} type - Message type, types include `INFO` `WARNING` `ERROR` `DEBUG`.
      * @param {String} message - The text to be printed into the console the console.
      */
     writeLog: (type, message) => {
-        const validTypes = ['INFO', 'WARNING', 'ERROR'];
+        const validTypes = ['INFO', 'WARNING', 'ERROR', 'DEBUG'];
 
         if (!type || validTypes.includes(type) === false) return console.trace(`%c[${validTypes[1]}] - You must include a valid message type for the usage of writeLog(). Valid types include ${validTypes.join(', ')}.`, `color: #ffa365; background-color: #654b39;`);
         if (!message) return console.trace(`%c[${validTypes[1]}] - You must include a message for the usage of writeLog().`, `color: #ffa365; background-color: #654b39;`);
@@ -25,7 +25,10 @@ const defowler = {
                 console.trace(`%c[${type}] - ${message}`, `color: #ffa365; background-color: #654b39`);
                 break;
             case validTypes[2]:
-                console.trace(`%c[${type}] - ${message}`, `color: #fe7b7f; background-color: #694143`);
+                console.trace(`%c[${type}] - ${message}`, `color: #fe7b7f; background-color:rgb(153, 141, 28)`);
+                break;
+            case validTypes[3]:
+                console.trace(`%c[${type}] - ${message}`, `color:rgb(230, 207, 0); background-color: #4a4a4a`);
                 break;
             default:
                 console.trace(`%c[${type}] - Type ${type} is an invalid usage for the writeLog() function, types include: INFO, WARNING, ERROR`, `color: #ffa365; background-color: #654b39`);
@@ -38,9 +41,8 @@ const defowler = {
      */
     handleNavButton: (pageName) => {
         const allpageNames = ['home', 'projects'];
+        const isGhPages = window.location.href.includes('.github.io'); // Check if the user is on a GitHub Pages site.
 
-        //if (allpageNames.includes(pageName) === false) return defowler.writeLog('WARNING', 'An invalid pageName was supplied at the handleNavButton() function.');
-        const isGhPages = window.location.href.includes('.github.io');
         switch (pageName) {
             case allpageNames[0]:
                 window.location.href = isGhPages ? '/defowler2005' : '/'; // Back to the root (index.html).
@@ -55,8 +57,8 @@ const defowler = {
     },
     /**
      * Sort numbers around.
-     * @param {Array<Number>} array - The array to be sorted.
-     * @returns {Array<Number>} - A version of an array which the numbers are sorted from 0 to 10 an up.
+     * @param {Array<Number>} array - The array of numbers to be sorted.
+     * @returns {Array<Number>} - A version of an array which the numbers are sorted from 0 and up.
      */
     sortNumbers: (array) => {
         if (!array) return defowler.writeLog('WARNING', 'You must provide a an array of numbers for the sortNumbers() function.');
@@ -82,15 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         script.onerror = () => {
             defowler.writeLog('ERROR', 'Failed to load Eruda script.');
-        };
-        document.body.appendChild(script);
-    } else {
-        defowler.writeLog('INFO', 'Eruda was not loaded as the user already has a console.');
-    }
+        }; document.body.appendChild(script);
+    } else defowler.writeLog('INFO', 'Eruda was not loaded as the user already has a console.');
     //Check for Apple products.
     if (isAppleProduct) defowler.log("WARNING", "Client is an apple user!");
-
-    const isGhPages = window.location.href.includes('.github.io');
-    console.warn('isGhPages: ' + isGhPages);
-})
+});
 //})();

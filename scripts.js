@@ -89,5 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //Check for Apple products.
     if (isAppleProduct) defowler.log("WARNING", "Client is an apple user!");
+
+    const isGhPages = window.location.href.includes('.github.io');
+        alert('isGhPages: ' + isGhPages);
 })
 //})();

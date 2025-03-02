@@ -1,0 +1,124 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: #ffa726;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+main {
+    flex: 1;
+}
+
+header {
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+}
+
+nav {
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #ffffff;
+}
+
+p {
+    margin: 10px 0;
+}
+
+input,
+textarea {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.navButton {
+    background-color: #ffa726;
+    color: #121212;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.navButton:hover {
+    background-color: #ff8c00;
+}
+
+.navButton:focus {
+    background-color: #b9740c;
+}
+
+ul,
+ol {
+    padding-left: 20px;
+}
+
+li {
+    margin: 5px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #1f1f1f;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+.projectsPanel {
+    
+}
+
+.carsPanel {
+    
+}
+
+.carsImage {
+    height: 250px;
+    width: 400px;
+}

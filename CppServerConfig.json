@@ -1,0 +1,6 @@
+{
+    "_comment0": "This is your current default configuration for the server.",
+    "_comment1": "You can change the IP and port to whatever you want to be, but make sure the values are valid. Otherwise the program will crash with no information or warning.",
+    "ip": "0.0.0.0",
+    "port": 80
+}

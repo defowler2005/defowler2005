@@ -124,6 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else defowler.writeLog('INFO', 'Eruda was not loaded as the user already has a console.');
     //Check for Apple products.
     if (isAppleProduct) defowler.writeLog("WARNING", "Client is an apple user!");
-    if (window.location.pathname === '/projects.html' || window.location.pathname === '/defowler2005projects.html') defowler.generateProjects('projectsPanel');
+    if (window.location.pathname === '/projects.html' || window.location.pathname === '/defowler2005/projects.html') defowler.generateProjects('projectsPanel');
 });
 //})();

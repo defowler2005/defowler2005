@@ -30,14 +30,13 @@ const defowler = {
      */
     handleNavButton: (pageName) => {
         const allpageNames = ['home', 'projects'];
-        const isGhPages = window.location.href.includes('.github.io'); // Check if the user is on a GitHub Pages site.
 
         switch (pageName) {
             case allpageNames[0]:
-                window.location.href = isGhPages ? '/defowler2005' : '/'; // Back to the root (index.html).
+                window.location.href = defowler.isGhPages ? '/defowler2005' : '/'; // Back to the root (index.html).
                 break;
             case allpageNames[1]:
-                window.location.href = isGhPages ? '/defowler2005/projects' : '/projects.html'; // Headed to the projects page.
+                window.location.href = defowler.isGhPages ? '/defowler2005/projects' : '/projects.html'; // Headed to the projects page.
                 break;
             default:
                 defowler.writeLog('WARNING', 'An invalid pageName was supplied at the handleNavButton() function.');
@@ -56,6 +55,11 @@ const defowler = {
     ],
 
     /**
+     * Check if the user is on a GitHub Pages site.
+     */
+    isGhPages: window.location.href.includes('.github.io'),
+
+    /**
      * Sort numbers around.
      * @param {Array<Number>} array - The array of numbers to be sorted.
      * @returns {Array<Number>} - A version of an array which the numbers are sorted from 0 and up.
@@ -65,11 +69,10 @@ const defowler = {
         if (Array.isArray(array) === false) return defowler.writeLog('WARNING', 'An invalid variable type was parsed in the sortNumbers() function.');
         return array.sort((a, b) => a - b);
     },
-/**
- * Dynamically sets html data to the projects page.
- * @param {String} element - The elements name, class or id.
- * @returns 
- */
+    /**
+     * Dynamically sets html data to the projects page.
+     * @param {String} element - The elements name, class or id.
+     */
     generateProjects: (element) => {
         const container = document.getElementById(element);
 
@@ -121,6 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else defowler.writeLog('INFO', 'Eruda was not loaded as the user already has a console.');
     //Check for Apple products.
     if (isAppleProduct) defowler.writeLog("WARNING", "Client is an apple user!");
-    if (window.location.pathname === '/projects.html') defowler.generateProjects('projectsPanel');
+    if (window.location.pathname === '/projects.html' || window.location.pathname === '/defowler2005projects.html') defowler.generateProjects('projectsPanel');
 });
 //})();

@@ -12,28 +12,17 @@ const defowler = {
      * @param {String} message - The text to be printed into the console the console.
      */
     writeLog: (type, message) => {
-        const validTypes = ['INFO', 'WARNING', 'ERROR', 'DEBUG'];
-
-        if (!type || validTypes.includes(type) === false) return console.trace(`%c[${validTypes[1]}] - You must include a valid message type for the usage of writeLog(). Valid types include ${validTypes.join(', ')}.`, `color: #ffa365; background-color: #654b39;`);
-        if (!message) return console.trace(`%c[${validTypes[1]}] - You must include a message for the usage of writeLog().`, `color: #ffa365; background-color: #654b39;`);
-
-        switch (type) {
-            case validTypes[0]:
-                console.trace(`%c[${type}] - ${message}`, `color: #96d652; background-color: #485b34`);
-                break;
-            case validTypes[1]:
-                console.trace(`%c[${type}] - ${message}`, `color: #ffa365; background-color: #654b39`);
-                break;
-            case validTypes[2]:
-                console.trace(`%c[${type}] - ${message}`, `color: #fe7b7f; background-color:rgb(153, 141, 28)`);
-                break;
-            case validTypes[3]:
-                console.trace(`%c[${type}] - ${message}`, `color:rgb(230, 207, 0); background-color: #4a4a4a`);
-                break;
-            default:
-                console.trace(`%c[${type}] - Type ${type} is an invalid usage for the writeLog() function, types include: INFO, WARNING, ERROR`, `color: #ffa365; background-color: #654b39`);
-                break;
+        const validTypes = {
+            INFO: 'color: #96d652; background-color: #485b34',
+            WARNING: 'color: #ffa365; background-color: #654b39',
+            ERROR: 'color: #fe7b7f; background-color: rgb(233, 131, 63)',
+            DEBUG: 'color: rgb(230, 207, 0); background-color: #4a4a4a',
         };
+
+        if (!validTypes[type]) {
+            console.trace(`%c[WARNING] - Invalid log type used: ${type}`, validTypes.WARNING);
+            return;
+        }; console.trace(`%c[${type}] - ${message}`, validTypes[type]);
     },
     /**
      * Dynamically redirect the user upon a nav button click.
@@ -56,6 +45,17 @@ const defowler = {
         }
     },
     /**
+     * A list of projects to be displayed.
+     */
+    projects: [
+        {
+            name: 'Project Alpha',
+            description: 'A cool project.',
+            link: 'https://example.com/alpha'
+        }
+    ],
+
+    /**
      * Sort numbers around.
      * @param {Array<Number>} array - The array of numbers to be sorted.
      * @returns {Array<Number>} - A version of an array which the numbers are sorted from 0 and up.
@@ -64,12 +64,45 @@ const defowler = {
         if (!array) return defowler.writeLog('WARNING', 'You must provide a an array of numbers for the sortNumbers() function.');
         if (Array.isArray(array) === false) return defowler.writeLog('WARNING', 'An invalid variable type was parsed in the sortNumbers() function.');
         return array.sort((a, b) => a - b);
+    },
+/**
+ * Dynamically sets html data to the projects page.
+ * @param {String} element - The elements name, class or id.
+ * @returns 
+ */
+    generateProjects: (element) => {
+        const container = document.getElementById(element);
+
+        if (!container) {
+            defowler.writeLog('ERROR', 'Could not find the container.');
+            return;
+        }
+
+        container.innerHTML = '';
+
+        if (defowler.projects.length === 0) {
+            container.innerHTML = '<p>No projects available.</p>';
+            return;
+        }
+
+        defowler.projects.forEach((project) => {
+            const projectDiv = document.createElement('div');
+            projectDiv.classList.add('projectCard');
+            projectDiv.innerHTML = `
+                <h3>${project.name}</h3>
+                <p>${project.description}</p>
+                <a href="${project.link}" target="_blank">View Project</a>
+            `;
+            container.appendChild(projectDiv);
+        });
+
+        defowler.writeLog('INFO', 'Projects loaded successfully.');
     }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = /Mobile|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
-    const isAppleProduct = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const isAppleProduct = /iPhone|iPad|iPod|Apple/i.test(navigator.userAgent);
 
     if (isMobile) {  // Checks if the client is on a mobile device
         const script = document.createElement('script');
@@ -87,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }; document.body.appendChild(script);
     } else defowler.writeLog('INFO', 'Eruda was not loaded as the user already has a console.');
     //Check for Apple products.
-    if (isAppleProduct) defowler.log("WARNING", "Client is an apple user!");
+    if (isAppleProduct) defowler.writeLog("WARNING", "Client is an apple user!");
+    if (window.location.pathname === '/projects.html') defowler.generateProjects('projectsPanel');
 });
 //})();

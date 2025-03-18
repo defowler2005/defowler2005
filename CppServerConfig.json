@@ -1,6 +1,17 @@
 {
-    "_comment0": "This is your current default configuration for the server.",
-    "_comment1": "You can change the IP and port to whatever you want to be, but make sure the values are valid. Otherwise the program will crash with no information or warning.",
+    "blackListedPaths": [
+        "/CppServerConfig.json",
+        "/CppServerLog.log"
+    ],
+    "comments": {
+        "_comment0": "This is the current default configuration for the server.",
+        "_comment1": "You can change the server options with this file, it'll overwrite default configurations. But if the server for some reason exists with no warning, a probable cause is the port assigned is in use or another option is malformed, try another port",
+        "_comment2": "You can also add a custom 404 error page too! you set the relative file path as follows: /path/to/404.html and or ./my404.html",
+        "_comment3": "Blacklisted files and folders can be added as well, you set them as follows: /somefolder/ and or /private.txt, add as many as you like!",
+        "_comment4": "Custom mime types are a way to define what the server should serve what as, for example a .png file would be servered as image/png"
+    },
+    "custom404Path": "",
+    "customMimeTypes": [],
     "ip": "0.0.0.0",
-    "port": 80
+    "port": 6432
 }

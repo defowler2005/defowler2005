@@ -105,7 +105,7 @@ const defowler = {
 
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = /Mobile|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
-    const isAppleProduct = /iPhone|iPad|iPod|Apple/i.test(navigator.userAgent);
+    const isAppleProduct = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (isMobile) {  // Checks if the client is on a mobile device
         const script = document.createElement('script');
@@ -114,9 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (typeof eruda !== 'undefined') {
                 eruda.init();
                 defowler.writeLog('INFO', 'Eruda successfully loaded. You now have a console on your phone!');
-            } else {
-                defowler.writeLog('WARN', 'Eruda could not be initialized; Eruda appears undefined.');
-            }
+            } else defowler.writeLog('WARN', 'Eruda could not be initialized; Eruda appears undefined.');
         };
         script.onerror = () => {
             defowler.writeLog('ERROR', 'Failed to load Eruda script.');
